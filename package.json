@@ -1,0 +1,23 @@
+{
+    "name": "server",
+    "description": "COMPS381F project",
+    "author": "Chen Weijie, Chen Zhanyi, Hau Hei Wan, Zhong Guzhi",
+    "version": "0.0.1",
+    "engines": {
+        "node": "^14.15.1"
+    },
+    "dependencies": {
+        "assert": "^1.4.1",
+        "body-parser": "^1.18.3",
+        "cookie-session": "latest",
+        "ejs": "*",
+        "express": "^4.18.2",
+        "moment": "^2.29.4",
+        "mongodb": "4.1",
+        "pretty-print-json": "^2.0.4"
+    },
+    "engine": "node >= 12.0.0",
+    "scripts": {
+        "start": "node server.js"
+    }
+}

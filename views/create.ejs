@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book</title>
+    <style>
+    label{
+        font-size: 1.3em;
+    }
+    </style>
+</head>
+
+<div>
+<body>
+    <div class="jumbotron text-center">
+            <h1>Add New Book Information</h1>
+        </div>
+    <form action="/create" method="POST">
+        <label for='name'><b>Book Name*:</b></label><br>
+          <input type="text" id="name" name="name" placeholder=""><br><br>
+        <label for='author'><b>Author*:</b></label><br>
+            <input type="text" id="author" name="author" placeholder=""><br><br>
+        <label for='type'><b>Type*:</b></label><br>
+        <% for (let i = 0; i < type.length; i++) { %>
+          <label for="type<%= i %>">
+            <input type="checkbox" id="type<%= i %>" name="selectedTypes" value="<%= type[i] %>"
+            onclick="limitCheckboxSelectionType(this)">
+            <%= type[i] %>
+          </label>
+        <% } %>
+        
+        <script>
+          function limitCheckboxSelectionType() {
+            var checkboxes = document.querySelectorAll('input[name="selectedTypes"]');
+            var checkedCount = 0;
+            for (var i = 0; i < checkboxes.length; i++) {
+              if (checkboxes[i].checked) {
+                checkedCount++;
+              }
+            }
+            if (checkedCount > 1) {
+              event.preventDefault();
+              return false;
+            }
+          }
+        </script>
+        <br><br>
+
+        <label for='theme'><b>Theme*:</b><small>(At least one theme)</small></label><br>
+        <% for (let i = 0; i < themes.length; i++) { %>
+            <label for="theme<%= i %>">
+              <input type="checkbox" id="theme<%= i %>" name="selectedThemes" value="<%= themes[i] %>"
+              onclick="limitCheckboxSelectionThemes(this)">
+              <%= themes[i] %>
+            </label>
+          <% } %>
+          
+          <script>
+            function limitCheckboxSelectionThemes() {
+              var checkboxes = document.querySelectorAll('input[name="selectedThemes"]');
+              var checkedCount = 0;
+              for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                  checkedCount++;
+                }
+              }
+              if (checkedCount > 3) {
+                event.preventDefault();
+                return false;
+              }
+            }
+          </script>
+        <br><br>
+
+        <label for='launchdate'><b>Launch Date*:</b><small>(DD-MM-YYYY)</small></label><br>
+            <input type="text" id="launchdate" name="launchdate" placeholder=""><br>
+        </p>
+        <input type="submit" value="Create" /> 
+    </form>    
+</body>
+</div>
+</html>

@@ -1,0 +1,53 @@
+<!-- edit.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Book Information</title>
+    <style>
+        label {
+            font-size: 1.3em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="jumbotron text-center">
+        <h1>Update Book Information</h1>
+    </div>
+    <form action="/update" method="POST">
+        <label for="bookName">Book Name:</label>
+        <input type="text" name="bookName" value="<%= item.Name %>">
+    
+        <label for="author">Author:</label>
+        <input type="text" name="author" value="<%= item.Author %>">
+    
+        <label for="type">Type:</label>
+        <select name="type">
+            <% for (let i = 0; i < type.length; i++) { %>
+                <option value="<%= type[i] %>" <% if (type[i] === item.Type) { %>selected<% } %>>
+                    <%= type[i] %>
+                </option>
+            <% } %>
+        </select>
+    
+        <label for="theme">Theme:</label>
+        <select name="theme" multiple>
+            <% for (let i = 0; i < themes.length; i++) { %>
+                <option value="<%= themes[i] %>" <% if (item.Theme.includes(themes[i])) { %>selected<% } %>>
+                    <%= themes[i] %>
+                </option>
+            <% } %>
+        </select>
+    
+        <label for="launchDate">Launch Date:</label>
+        <input type="text" name="launchDate" value="<%= item.LaunchDate %>">
+    
+        <button type="submit">Update</button>
+    </form>
+</body>
+
+</html>

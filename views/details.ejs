@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+    <style>
+        p{
+            font-size: 1.3em;
+        }
+    </style>
+</head>
+<body>
+    <div class="jumbotron text-center">
+        <h1>Book Information</h1>
+    </div>
+    <div class="row">
+        <p>Book Name:  <%= item.Name %></p>
+        <p>Author:  <%= item.Author %></p>
+        <p>Code:  <%= item.Code %></p>
+        <p>Type:  <%= item.Type %></p>
+        <p>Theme:
+            <% if (Array.isArray(item.Theme)) { %>
+              <%= item.Theme.join(', ') %>
+            <% } %>
+          </p>
+        <p>Status:  <%= item.Status %></p>
+        <p>Launch Date:  <%= item.LaunchDate %></p>
+        <p>BorrowRecord:
+            <br>
+            <% item.BorrowRecord.forEach(function(borrowrecord) { %>
+              <span><%= borrowrecord %></span><br>
+            <% }); %>
+          </p><br>
+    </div>
+        <a href="/edit?_id=<%= item._id %>" >Update the Book information</a><br><br>
+        <a href="/delete?_id=<%= item._id %>">Delete the Book information</a><br><br>
+        <a href="/home">Home</a>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<html>
+    <body>
+        <H2>(<%= nItems %>) is found. There are (<%= nItems %>) books. </H2>
+        <ul>
+            <% if (Array.isArray(items)) { %>
+                <% items.forEach(function(item) { %> 
+                    <li>Book name: <a href="/details?Name=<%= item.Name %>"><%= item.Name %></a></li>
+                <% });} %>
+        </ul>
+        <a href="/home">Back to home.</a>
+    </body>
+</html>
